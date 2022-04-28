@@ -5,6 +5,7 @@ export default class GeraSenha {
     const qtdCaracteres = document.querySelector("#qtd-caracteres");
     const checkboxUppercase = document.querySelector("#upper");
     const checkboxLowercase = document.querySelector("#lower");
+    const checkboxSymbol = document.querySelector("#symbol");
 
     function getRandomInt() {
       return Math.floor(Math.random() * qtdCaracteres.value);
@@ -21,8 +22,9 @@ export default class GeraSenha {
     };
 
     const gerarSenha = () => {
-      divResult.innerText = getRandomStringUppercase(5);
-      divResult.innerText += getRandomStringLowercase(5);
+      divResult.innerText = getRandomStringUppercase(qtdCaracteres.value);
+      divResult.innerText += getRandomStringLowercase(qtdCaracteres.value);
+      divResult.innerText += getRandomSymbol(qtdCaracteres.value);
       divResult.innerText += charactersLimit();
     };
 
@@ -55,6 +57,22 @@ export default class GeraSenha {
         }
 
         return randomString;
+      }
+
+      return "";
+    };
+
+    const getRandomSymbol = (tamanho) => {
+      if (checkboxSymbol.checked) {
+        let randomSymbol = "";
+        const symbol = "!@#$%¨&*()_-+={}`^:>?|";
+
+        for (let i = 0; i < tamanho; i++) {
+          randomSymbol += symbol.charAt(
+            Math.floor(Math.random() * symbol.length)
+          );
+        }
+        return randomSymbol;
       }
 
       return "";

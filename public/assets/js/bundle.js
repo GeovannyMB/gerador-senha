@@ -26,6 +26,7 @@ var GeraSenha = /*#__PURE__*/_createClass(function GeraSenha() {
   var qtdCaracteres = document.querySelector("#qtd-caracteres");
   var checkboxUppercase = document.querySelector("#upper");
   var checkboxLowercase = document.querySelector("#lower");
+  var checkboxSymbol = document.querySelector("#symbol");
 
   function getRandomInt() {
     return Math.floor(Math.random() * qtdCaracteres.value);
@@ -42,8 +43,9 @@ var GeraSenha = /*#__PURE__*/_createClass(function GeraSenha() {
   };
 
   var gerarSenha = function gerarSenha() {
-    divResult.innerText = getRandomStringUppercase(5);
-    divResult.innerText += getRandomStringLowercase(5);
+    divResult.innerText = getRandomStringUppercase(qtdCaracteres.value);
+    divResult.innerText += getRandomStringLowercase(qtdCaracteres.value);
+    divResult.innerText += getRandomSymbol(qtdCaracteres.value);
     divResult.innerText += charactersLimit();
   };
 
@@ -72,6 +74,21 @@ var GeraSenha = /*#__PURE__*/_createClass(function GeraSenha() {
       }
 
       return randomString;
+    }
+
+    return "";
+  };
+
+  var getRandomSymbol = function getRandomSymbol(tamanho) {
+    if (checkboxSymbol.checked) {
+      var randomSymbol = "";
+      var symbol = "!@#$%¨&*()_-+={}`^:>?|";
+
+      for (var i = 0; i < tamanho; i++) {
+        randomSymbol += symbol.charAt(Math.floor(Math.random() * symbol.length));
+      }
+
+      return randomSymbol;
     }
 
     return "";
