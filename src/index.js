@@ -1,6 +1,4 @@
-import GeraSenha from "./modules/GeraSenha";
+import showPassword from "./modules/showPassword";
 import "./assets/css/style.css";
 
-(function () {
-  const gera = new GeraSenha();
-})();
+showPassword();

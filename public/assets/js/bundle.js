@@ -10,98 +10,167 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ GeraSenha)
+/* harmony export */   "default": () => (/* binding */ geraSenha)
 /* harmony export */ });
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+/* export default class GeraSenha {
+  constructor() {
+    const btnGerarSenha = document.querySelector(".btn-gera-senha");
+    const divResult = document.querySelector(".resultado");
+    const qtdCaracteres = document.querySelector("#qtd-caracteres");
+    const checkboxUppercase = document.querySelector("#upper");
+    const checkboxLowercase = document.querySelector("#lower");
+    const checkboxSymbol = document.querySelector("#symbol");
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+    function getRandomInt() {
+      return Math.floor(Math.random() * qtdCaracteres.value);
+    }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    const charactersLimit = () => {
+      let n = "";
 
-var GeraSenha = /*#__PURE__*/_createClass(function GeraSenha() {
-  _classCallCheck(this, GeraSenha);
+      for (let i = 0; i < qtdCaracteres.value; i++) {
+        n += getRandomInt();
+      }
 
-  var btnGerarSenha = document.querySelector(".btn-gera-senha");
-  var divResult = document.querySelector(".resultado");
-  var qtdCaracteres = document.querySelector("#qtd-caracteres");
-  var checkboxUppercase = document.querySelector("#upper");
-  var checkboxLowercase = document.querySelector("#lower");
-  var checkboxSymbol = document.querySelector("#symbol");
+      return n;
+    };
 
-  function getRandomInt() {
-    return Math.floor(Math.random() * qtdCaracteres.value);
+    const gerarSenha = () => {
+      divResult.innerHTML = getRandomStringUppercase(qtdCaracteres.value);
+      divResult.innerHTML += getRandomStringLowercase(qtdCaracteres.value);
+      divResult.innerHTML += getRandomSymbol(qtdCaracteres.value);
+      divResult.innerHTML += charactersLimit();
+    };
+
+    const lengthResult = () => {};
+
+    const getRandomStringUppercase = (tamanho) => {
+      if (checkboxUppercase.checked) {
+        let randomString = "";
+        const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (let i = 0; i < tamanho; i++) {
+          randomString += string.charAt(
+            Math.floor(Math.random() * string.length)
+          );
+        }
+
+        return randomString;
+      }
+
+      return "";
+    };
+
+    const getRandomStringLowercase = (tamanho) => {
+      if (checkboxLowercase.checked) {
+        let randomString = "";
+        const string = "abcdefghijklmnopqrstuvwxyz";
+
+        for (let i = 0; i < tamanho; i++) {
+          randomString += string.charAt(
+            Math.floor(Math.random() * string.length)
+          );
+        }
+
+        return randomString;
+      }
+
+      return "";
+    };
+
+    const getRandomSymbol = (tamanho) => {
+      if (checkboxSymbol.checked) {
+        let randomSymbol = "";
+        const symbol = "!@#$%¨&*()_-+={}`^:>?|";
+
+        for (let i = 0; i < tamanho; i++) {
+          randomSymbol += symbol.charAt(
+            Math.floor(Math.random() * symbol.length)
+          );
+        }
+        return randomSymbol;
+      }
+
+      return "";
+    };
+
+    const novaSenha = () => {
+      btnGerarSenha.addEventListener("click", () => {
+        gerarSenha();
+      });
+    };
+
+    novaSenha();
+  }
+}
+ */
+var rand = function rand(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+var geraMaiuscula = function geraMaiuscula() {
+  return String.fromCharCode(rand(65, 91));
+};
+
+var geraMinuscula = function geraMinuscula() {
+  return String.fromCharCode(rand(97, 123));
+};
+
+var geraNumero = function geraNumero() {
+  return String.fromCharCode(rand(48, 58));
+};
+
+var simbolos = ',.;/]´[-=)(*&¨%$#@!"';
+
+var geraSimbolo = function geraSimbolo() {
+  return simbolos[rand(0, simbolos.length)];
+};
+
+function geraSenha(qtd, maiuscula, minuscula, numero, simbolo) {
+  var senhaArray = [];
+  qtd = Number();
+
+  for (var i = 0; i < qtd; i++) {
+    maiuscula && senhaArray.push(geraMaiuscula());
+    minuscula && senhaArray.push(geraMinuscula());
+    numero && senhaArray.push(geraNumero());
+    simbolo && senhaArray.push(geraSimbolo());
   }
 
-  var charactersLimit = function charactersLimit() {
-    var n = "";
+  return senhaArray.join("").slice(0, qtd);
+}
 
-    for (var i = 0; i < qtdCaracteres.value; i++) {
-      n += getRandomInt();
-    }
+/***/ }),
 
-    return n;
-  };
+/***/ "./src/modules/showPassword.js":
+/*!*************************************!*\
+  !*** ./src/modules/showPassword.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-  var gerarSenha = function gerarSenha() {
-    divResult.innerText = getRandomStringUppercase(qtdCaracteres.value);
-    divResult.innerText += getRandomStringLowercase(qtdCaracteres.value);
-    divResult.innerText += getRandomSymbol(qtdCaracteres.value);
-    divResult.innerText += charactersLimit();
-  };
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _GeraSenha__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GeraSenha */ "./src/modules/GeraSenha.js");
 
-  var getRandomStringUppercase = function getRandomStringUppercase(tamanho) {
-    if (checkboxUppercase.checked) {
-      var randomString = "";
-      var string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-      for (var i = 0; i < tamanho; i++) {
-        randomString += string.charAt(Math.floor(Math.random() * string.length));
-      }
-
-      return randomString;
-    }
-
-    return "";
-  };
-
-  var getRandomStringLowercase = function getRandomStringLowercase(tamanho) {
-    if (checkboxLowercase.checked) {
-      var randomString = "";
-      var string = "abcdefghijklmnopqrstuvwxyz";
-
-      for (var i = 0; i < tamanho; i++) {
-        randomString += string.charAt(Math.floor(Math.random() * string.length));
-      }
-
-      return randomString;
-    }
-
-    return "";
-  };
-
-  var getRandomSymbol = function getRandomSymbol(tamanho) {
-    if (checkboxSymbol.checked) {
-      var randomSymbol = "";
-      var symbol = "!@#$%¨&*()_-+={}`^:>?|";
-
-      for (var i = 0; i < tamanho; i++) {
-        randomSymbol += symbol.charAt(Math.floor(Math.random() * symbol.length));
-      }
-
-      return randomSymbol;
-    }
-
-    return "";
-  };
-
-  var novaSenha = function novaSenha() {
-    btnGerarSenha.addEventListener("click", gerarSenha);
-  };
-
-  novaSenha();
+var resultado = document.querySelector(".resultado");
+var qtdCaracteres = document.querySelector("#qtd-caracteres");
+var chkUpper = document.querySelector("#upper");
+var chkLower = document.querySelector("#lower");
+var chkNumber = document.querySelector("#number");
+var chkSymbol = document.querySelector("#symbol");
+var btnPassword = document.querySelector(".btn-gera-senha");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  btnPassword.addEventListener("click", function () {
+    resultado.innerHTML = gera();
+  });
 });
 
-
+function gera() {
+  var senha = (0,_GeraSenha__WEBPACK_IMPORTED_MODULE_0__["default"])(qtdCaracteres.value, chkUpper.checked, chkLower.checked, chkNumber.checked, chkSymbol.checked);
+  return senha;
+}
 
 /***/ }),
 
@@ -709,14 +778,11 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_GeraSenha__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/GeraSenha */ "./src/modules/GeraSenha.js");
+/* harmony import */ var _modules_showPassword__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/showPassword */ "./src/modules/showPassword.js");
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
 
 
-
-(function () {
-  var gera = new _modules_GeraSenha__WEBPACK_IMPORTED_MODULE_0__["default"]();
-})();
+(0,_modules_showPassword__WEBPACK_IMPORTED_MODULE_0__["default"])();
 })();
 
 /******/ })()
