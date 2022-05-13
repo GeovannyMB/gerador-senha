@@ -100,7 +100,7 @@ const geraSimbolo = () => simbolos[rand(0, simbolos.length)];
 
 export default function geraSenha(qtd, maiuscula, minuscula, numero, simbolo) {
   const senhaArray = [];
-  qtd = Number();
+  qtd = Number(qtd);
 
   for (let i = 0; i < qtd; i++) {
     maiuscula && senhaArray.push(geraMaiuscula());

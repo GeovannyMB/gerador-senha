@@ -128,7 +128,7 @@ var geraSimbolo = function geraSimbolo() {
 
 function geraSenha(qtd, maiuscula, minuscula, numero, simbolo) {
   var senhaArray = [];
-  qtd = Number();
+  qtd = Number(qtd);
 
   for (var i = 0; i < qtd; i++) {
     maiuscula && senhaArray.push(geraMaiuscula());
@@ -163,7 +163,7 @@ var chkSymbol = document.querySelector("#symbol");
 var btnPassword = document.querySelector(".btn-gera-senha");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   btnPassword.addEventListener("click", function () {
-    resultado.innerHTML = gera();
+    resultado.textContent = gera();
   });
 });
 

@@ -10,7 +10,7 @@ const btnPassword = document.querySelector(".btn-gera-senha");
 
 export default () => {
   btnPassword.addEventListener("click", () => {
-    resultado.innerHTML = gera();
+    resultado.textContent = gera();
   });
 };
 
